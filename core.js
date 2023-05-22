@@ -71,6 +71,44 @@ const List = class {
 
     this.inLength++;
   }
+
+  delete(index) {
+    if (index < 0 || index >= this.inLength) {
+      throw new Error("Invalid index");
+    }
+
+    let deletedNode;
+
+    if (this.inLength === 1) {
+      deletedNode = this.head;
+      this.head = null;
+      this.tail = null;
+    } else if (index === 0) {
+      deletedNode = this.head;
+      this.head = this.head.next;
+      this.head.prev = null;
+    } else if (index === this.inLength - 1) {
+      deletedNode = this.tail;
+      this.tail = this.tail.prev;
+      this.tail.next = null;
+    } else {
+      let currentNode = this.head;
+      let currentIndex = 0;
+
+      while (currentIndex < index) {
+        currentNode = currentNode.next;
+        currentIndex++;
+      }
+
+      deletedNode = currentNode;
+      currentNode.prev.next = currentNode.next;
+      currentNode.next.prev = currentNode.prev;
+    }
+
+    this.inLength--;
+
+    return deletedNode.data;
+  }
 };
 
 // const test = new List();
