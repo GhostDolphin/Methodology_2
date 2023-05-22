@@ -136,6 +136,50 @@ const List = class {
       currentNode = currentNode.next;
     }
   }
+
+  get(index) {
+    if (index < 0 || index >= this.inLength) {
+      throw new Error("Invalid index");
+    }
+
+    let currentNode = this.head;
+    let currentIndex = 0;
+
+    while (currentIndex < index) {
+      currentNode = currentNode.next;
+      currentIndex++;
+    }
+
+    return currentNode.data;
+  }
+
+  clone() {
+    const newList = new DoublyLinkedList();
+    let currentNode = this.head;
+
+    while (currentNode !== null) {
+      newList.append(currentNode.data);
+      currentNode = currentNode.next;
+    }
+
+    return newList;
+  }
+
+  reverse() {
+    let currentNode = this.head;
+    let prevNode = null;
+
+    while (currentNode !== null) {
+      const nextNode = currentNode.next;
+      currentNode.next = prevNode;
+      currentNode.prev = nextNode;
+      prevNode = currentNode;
+      currentNode = nextNode;
+    }
+
+    this.tail = this.head;
+    this.head = prevNode;
+  }
 };
 
 // const test = new List();
