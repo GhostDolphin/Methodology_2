@@ -212,9 +212,21 @@ const List = class {
 
     return -1;
   }
+
+  clear() {
+    this.head = null;
+    this.tail = null;
+    this.inLength = 0;
+  }
+
+  extend(elements) {
+    const newList = elements.clone();
+    let currentNode = newList.head;
+
+    while (currentNode !== null) {
+      this.append(currentNode.data);
+      currentNode = currentNode.next;
+    }
+  }
 };
 
-// const test = new List();
-
-// test.append('a');
-// console.log(test);
