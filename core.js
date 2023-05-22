@@ -26,4 +26,41 @@ const List = class {
     }
     return this.elements.splice(index, 1)[0];
   }
+
+  deleteAll(element) {
+    this.elements = this.elements.filter(e => e !== element);
+  }
+
+  get(index) {
+    if (index < 0 || index >= this.length()) {
+      throw new Error("Invalid index");
+    }
+    return this.elements[index];
+  }
+
+  clone() {
+    let newList = new List();
+    newList.elements = [...this.elements];
+    return newList;
+  }
+
+  reverse() {
+    this.elements = this.elements.reverse();
+  }
+
+  findFirst(element) {
+    return this.elements.indexOf(element);
+  }
+
+  findLast(element) {
+    return this.elements.lastIndexOf(element);
+  }
+
+  clear() {
+    this.elements = [];
+  }
+
+  extend(elements) {
+    this.elements = [...this.elements, ...elements.elements];
+  }
 };
