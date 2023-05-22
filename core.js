@@ -154,7 +154,7 @@ const List = class {
   }
 
   clone() {
-    const newList = new DoublyLinkedList();
+    const newList = new List();
     let currentNode = this.head;
 
     while (currentNode !== null) {
@@ -230,7 +230,7 @@ const List = class {
   }
 };
 
-const list = new DoublyLinkedList();
+const list = new List();
 
 list.append('A');
 list.append('B');
