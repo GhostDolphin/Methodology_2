@@ -34,3 +34,4 @@ $ npm test
 
 >Conclusion
 
+For small projects like this, CI-tests seem unnecessary to me, but for a big and saturated project it might be a life-saver.
