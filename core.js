@@ -230,3 +230,30 @@ const List = class {
   }
 };
 
+const list = new DoublyLinkedList();
+
+list.append('A');
+list.append('B');
+list.append('C');
+
+console.log(list.length()); // 3
+
+list.insert('D', 1);
+
+console.log(list.get(1)); // 'D'
+
+list.delete(2);
+
+console.log(list.length()); // 3
+console.log(list.findFirst('A')); // 0
+console.log(list.findLast('B')); // 1
+
+const newList = list.clone();
+
+list.reverse();
+
+list.extend(newList);
+
+list.clear();
+
+console.log(list.length()); // 0
