@@ -109,6 +109,33 @@ const List = class {
 
     return deletedNode.data;
   }
+
+  deleteAll(element) {
+    let currentNode = this.head;
+
+    while (currentNode !== null) {
+      if (currentNode.data === element) {
+        if (currentNode === this.head) {
+          this.head = currentNode.next;
+          if (this.head !== null) {
+            this.head.prev = null;
+          }
+        } else if (currentNode === this.tail) {
+          this.tail = currentNode.prev;
+          if (this.tail !== null) {
+            this.tail.next = null;
+          }
+        } else {
+          currentNode.prev.next = currentNode.next;
+          currentNode.next.prev = currentNode.prev;
+        }
+
+        this.inLength--;
+      }
+
+      currentNode = currentNode.next;
+    }
+  }
 };
 
 // const test = new List();
