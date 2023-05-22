@@ -180,6 +180,38 @@ const List = class {
     this.tail = this.head;
     this.head = prevNode;
   }
+
+  findFirst(element) {
+    let currentNode = this.head;
+    let index = 0;
+
+    while (currentNode !== null) {
+      if (currentNode.data === element) {
+        return index;
+      }
+
+      currentNode = currentNode.next;
+      index++;
+    }
+
+    return -1;
+  }
+
+  findLast(element) {
+    let currentNode = this.tail;
+    let index = this.inLength - 1;
+
+    while (currentNode !== null) {
+      if (currentNode.data === element) {
+        return index;
+      }
+
+      currentNode = currentNode.prev;
+      index--;
+    }
+
+    return -1;
+  }
 };
 
 // const test = new List();
